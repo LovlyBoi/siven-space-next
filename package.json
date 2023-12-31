@@ -3,17 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install && husky add .husky/commit-msg 'yarn commitlint --edit $1'",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "commit": "git-cz",
-    "cz": "git-cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    }
+    "commit": "cz"
   },
   "dependencies": {
     "bloomfilter": "^0.0.18",
@@ -25,17 +20,19 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
-    "commitizen": "^4.3.0",
-    "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "husky": "^8.0.3",
+    "only-allow": "^1.2.1",
     "postcss": "^8",
+    "prettier": "^3.1.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
