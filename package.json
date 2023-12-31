@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install && husky add .husky/commit-msg 'yarn commitlint --edit $1'",
+    "prepare": "if [ ! -f .husky/commit-msg ]; then husky install && husky add .husky/commit-msg 'yarn commitlint --edit $1' && husky add .husky/pre-commit 'yarn lint-staged'; fi",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -30,6 +30,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "only-allow": "^1.2.1",
     "postcss": "^8",
     "prettier": "^3.1.1",
