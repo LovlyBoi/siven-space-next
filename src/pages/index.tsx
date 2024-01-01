@@ -1,19 +1,20 @@
-import type { FC } from 'react'
+import { type FC, memo } from 'react'
 import RootLayout from '@/layouts/RootLayout'
 import CardContainer from '@/components/CardContainer'
 
 const PageIndex: FC<{
   axiosBaseUrl: string
 }> = ({ axiosBaseUrl }) => {
+  console.log('axiosBaseUrl', axiosBaseUrl)
+
   return (
     <RootLayout>
-      <div>{axiosBaseUrl}</div>
       <CardContainer></CardContainer>
     </RootLayout>
   )
 }
 
-export default PageIndex
+export default memo(PageIndex)
 
 export async function getStaticProps() {
   return {

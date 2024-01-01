@@ -5,10 +5,8 @@ type Props = {
   type?: string
 }
 
-const CardContainer: FC<Props> = ({ type }) => {
-  return (
-    <div>CardContainer: {type}</div>
-  )
+const CardContainer: FC<Props> = ({ type = 'all' }) => {
+  return <div>CardContainer: {type}</div>
 }
 
 export default CardContainer

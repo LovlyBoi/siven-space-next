@@ -12,3 +12,91 @@ body {
   @apply bg-indigo-50 dark:bg-slate-800;
   min-height: 100%;
 }
+
+/* 文本主题颜色 */
+.theme-gray-800-text {
+  @apply text-gray-800 dark:text-gray-200;
+}
+
+.theme-gray-600-text {
+  @apply text-gray-600 dark:text-gray-200;
+}
+
+.theme-gray-500-text {
+  @apply text-gray-500 dark:text-gray-300;
+}
+
+.theme-gray-400-text {
+  @apply text-gray-400 dark:text-gray-400;
+}
+
+/* 背景主题颜色 */
+.theme-white-800-bg {
+  @apply bg-white dark:bg-slate-800;
+}
+
+.theme-white-600-bg {
+  @apply bg-white dark:bg-slate-600;
+}
+
+.theme-white-400-bg {
+  @apply bg-white dark:bg-slate-400;
+}
+
+/* React Transition 动画 */
+/* header展开动画，不使用 width，不定宽度动画不生效 */
+:root {
+  --header-nav-expend-width: 400px;
+  --header-nav-expend-time: 300ms;
+}
+
+.draw-enter,
+.draw-appear {
+  max-width: 0;
+}
+
+.draw-enter-active,
+.draw-appear-active {
+  max-width: var(--header-nav-expend-width);
+  transition: all var(--header-nav-expend-time) ease-in;
+}
+
+.draw-enter-done,
+.draw-appear-done {
+  max-width: var(--header-nav-expend-width);
+}
+
+.draw-exit {
+  max-width: var(--header-nav-expend-width);
+}
+
+.draw-exit-active {
+  max-width: 0;
+  transition: all var(--header-nav-expend-time) ease-out;
+}
+
+.draw-exit-done {
+  max-width: 0;
+}
+
+/* 从上面渐入的动画 */
+.fade-in-top-enter-active,
+.fade-in-top-leave-active {
+  transition: all 300ms;
+}
+
+.fade-in-top-enter-from,
+.fade-in-top-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 200ms;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
