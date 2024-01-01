@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import avatar from '@/assets/avatar.jpg'
 import styles from './index.module.css'
+import { useScreenType } from '@/utils/useScreen'
 
 type Props = {
   children?: ReactNode
@@ -31,12 +32,25 @@ const navList: {
 const CommomHeader: FC<Props> = () => {
   const [expend, setExpend] = useState(false)
 
+  const isPhone = useScreenType() === 'phone'
+
+  if (isPhone) {
+    // 如果是手机端，收起导航栏
+    expend && setExpend(false)
+  }
+
+  // 展开或收起导航栏，手机端不触发该事件
   const handleExpendChange = (checked: boolean) => {
     setExpend(checked)
   }
 
+  // 手机端点击菜单事件
+  const handlePhoneMenuClick = () => {
+    console.log('is phone click')
+  }
+
   return (
-    <div className={styles['nav-header']}>
+    <header className={styles['nav-header']}>
       <div className="header-wrapper sm:inline-block">
         <input
           type="checkbox"
@@ -45,7 +59,7 @@ const CommomHeader: FC<Props> = () => {
           checked={expend}
           onChange={(e) => handleExpendChange(e.target.checked)}
         />
-        <header className="header theme-white-600-bg p-4 mt-2 rounded-lg shadow-sm flex sm:mt-4 md:mt-24 items-center">
+        <section className="header theme-white-600-bg p-4 mt-2 rounded-lg shadow-sm flex justify-between sm:mt-4 md:mt-24 items-center">
           <div className="left flex items-center mr-6">
             <Link
               href="/"
@@ -70,56 +84,61 @@ const CommomHeader: FC<Props> = () => {
             </div>
           </div>
 
-          <CSSTransition
-            in={expend}
-            classNames="draw"
-            timeout={300}
-            appear
-            unmountOnExit
-          >
-            <ul className="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden">
-              {navList.map((nav) => (
-                <li className="px-6 whitespace-nowrap" key={nav.title}>
-                  {nav.render ? (
-                    nav.render()
-                  ) : (
-                    <Link href={nav.to ?? '/'}>{nav.title}</Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </CSSTransition>
+          <nav className="min-w-[80px]">
+            <CSSTransition
+              in={expend}
+              classNames="draw"
+              timeout={300}
+              appear
+              unmountOnExit
+            >
+              <ul className="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden">
+                {navList.map((nav) => (
+                  <li className="px-6 whitespace-nowrap" key={nav.title}>
+                    {nav.render ? (
+                      nav.render()
+                    ) : (
+                      <Link href={nav.to ?? '/'}>{nav.title}</Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </CSSTransition>
+          </nav>
 
-          <div className="right flex items-center mr-4 ml-6">
+          <div
+            className={
+              'right flex items-center ml-6' + (isPhone ? '' : ' mr-4')
+            }
+          >
             {/* 手机菜单按钮 */}
-            {/* <label className="menu-static">
-              <div></div>
-              <div></div>
-              <div></div>
-            </label> */}
-            {/* 大屏幕展开菜单按钮 */}
-            {expend ? (
-              <label
-                htmlFor="extend-header-btn"
-                className={styles['cross-movable']}
-              >
-                <div />
-                <div />
-              </label>
-            ) : (
-              <label
-                htmlFor="extend-header-btn"
-                className={styles['menu-movable']}
+            {isPhone && (
+              <div
+                className={styles['menu-static']}
+                onClick={() => handlePhoneMenuClick()}
               >
                 <div />
                 <div />
                 <div />
-              </label>
+              </div>
             )}
+            {/* 大屏幕展开菜单按钮 */}
+            {!isPhone ? (
+              <label
+                htmlFor="extend-header-btn"
+                className={
+                  expend ? styles['cross-movable'] : styles['menu-movable']
+                }
+              >
+                <div />
+                <div />
+                <div />
+              </label>
+            ) : null}
           </div>
-        </header>
+        </section>
       </div>
-    </div>
+    </header>
   )
 }
 
