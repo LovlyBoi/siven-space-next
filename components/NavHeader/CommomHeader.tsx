@@ -1,8 +1,9 @@
+'use client'
 import { useState, type FC, type ReactNode } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import Link from 'next/link'
 import Image from 'next/image'
-import avatar from '@/assets/avatar.jpg'
+import avatar from '@/static/avatar.jpg'
 import styles from './index.module.css'
 import { useScreenType } from '@/utils/useScreen'
 

@@ -1,5 +1,5 @@
-import { Card } from "@/types";
-import { request } from "@/utils/request";
+import { Card } from '../types'
+import { request } from '../utils/request'
 
 export function getBlogsByType(type: string) {
   return request<{ cards: Card[]; hasNext: boolean }>({

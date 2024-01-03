@@ -11,12 +11,11 @@ export interface Card {
 
 export type TagColor = 'yellow' | 'pink' | 'green' | 'indigo'
 
-
 export enum BlogType {
-    'front-end-tec' = 1,
-    'node',
-    'math',
-    'life',
-    'back-end-tec',
-    'other-tec',
-  }
+  'front-end-tec' = 1,
+  'node',
+  'math',
+  'life',
+  'back-end-tec',
+  'other-tec',
+}

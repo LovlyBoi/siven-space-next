@@ -1,4 +1,4 @@
-import { type Dispatch, type SetStateAction, useState } from 'react'
+import { type Dispatch, type SetStateAction, useState, useEffect } from 'react'
 import { useDocument, useClient } from './useClient'
 
 const setters = new Set<Dispatch<SetStateAction<number>>>()
