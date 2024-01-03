@@ -2,10 +2,8 @@ import { type FC, memo } from 'react'
 import RootLayout from '@/layouts/RootLayout'
 import CardContainer from '@/components/CardContainer'
 
-const PageIndex: FC<{
-  axiosBaseUrl: string
-}> = ({ axiosBaseUrl }) => {
-  console.log('axiosBaseUrl', axiosBaseUrl)
+const PageIndex: FC = () => {
+  console.log('axiosBaseUrl', process.env.AXIOS_BASEURL)
 
   return (
     <RootLayout>
@@ -16,10 +14,10 @@ const PageIndex: FC<{
 
 export default memo(PageIndex)
 
-export async function getStaticProps() {
-  return {
-    props: {
-      axiosBaseUrl: process.env.AXIOS_BASEURL,
-    },
-  }
-}
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       axiosBaseUrl: process.env.AXIOS_BASEURL,
+//     },
+//   }
+// }
