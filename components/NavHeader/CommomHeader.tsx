@@ -1,6 +1,7 @@
 'use client'
 import { useState, type FC, type ReactNode, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import avatar from '@/static/img/avatar.jpg'
@@ -22,15 +23,17 @@ const navList: {
   },
   {
     title: '笔记',
-    to: '/classes/notes',
+    to: '/notes',
   },
   {
     title: '生活随笔',
-    to: '/classes/essays',
+    to: '/essays',
   },
 ]
 
 const CommomHeader: FC<Props> = () => {
+  const pathname = usePathname()
+
   const [expend, setExpend] = useState(false)
 
   // 没有用，只是为了解决CSSTransition警告的问题
@@ -99,9 +102,19 @@ const CommomHeader: FC<Props> = () => {
               appear
               unmountOnExit
             >
-              <ul className="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden">
+              <ul
+                ref={nodeRef}
+                className="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden"
+              >
                 {navList.map((nav) => (
-                  <li className="px-6 whitespace-nowrap" key={nav.title}>
+                  <li
+                    className={`px-6 whitespace-nowrap ${
+                      pathname === nav.to
+                        ? 'text-gray-600 dark:text-gray-200'
+                        : ''
+                    }`}
+                    key={nav.title}
+                  >
                     {nav.render ? (
                       nav.render()
                     ) : (

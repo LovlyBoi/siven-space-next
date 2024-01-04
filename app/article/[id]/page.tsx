@@ -1,16 +1,12 @@
-import type { FC, ReactNode } from 'react'
+import { type ReactNode, memo } from 'react'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'article',
 }
 
-const Article: FC = () => {
-  return (
-    <>
-      <div>Article</div>
-    </>
-  )
-}
+type Props = { params: { id: string } }
 
-export default Article
+export default memo(function Article({ params: { id } }: Props) {
+  return <div>article: {id}</div>
+})
