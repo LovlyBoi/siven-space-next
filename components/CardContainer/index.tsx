@@ -2,7 +2,7 @@
 import { useState, useEffect, memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import Card from '@/components/Card'
-import { fetchMasonry, startMasonry } from '@/utils/startMasonry'
+import { masonryLoayout } from '@/utils/startMasonry'
 import { getBlogsByType } from '@/apis'
 import type { Card as CardType } from '@/types'
 
@@ -18,15 +18,14 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
 
   useEffect(() => {
     let ignore = false
-    // 等到拿到Masonry和数据之后再执行瀑布流布局
-    Promise.all([getBlogs(), fetchMasonry()]).then(
-      ([{ cards, hasNext }]) => {
-        if (ignore) return null
 
+    getBlogs().then(
+      ({ cards, hasNext }) => {
+        if (ignore) return null
         setCards(cards)
         // 等待 React 完成渲染
         setTimeout(() => {
-          startMasonry('.card-container', {
+          masonryLoayout('.card-container', {
             itemSelector: '.content-card',
             gutter: 10,
           })
@@ -43,13 +42,11 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
   }, [])
 
   return (
-    <>
-      <div className="card-container w-full py-6">
-        {cards.map((card, index) => (
-          <Card data={card} key={index} />
-        ))}
-      </div>
-    </>
+    <div className="card-container w-full py-6">
+      {cards.map((card, index) => (
+        <Card data={card} key={index} />
+      ))}
+    </div>
   )
 }
 
