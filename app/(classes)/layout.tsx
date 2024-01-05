@@ -1,6 +1,6 @@
 import { type ReactNode, type FC, memo } from 'react'
 import Script from 'next/script'
-import CommomHeader from '@/components/NavHeader/CommomHeader'
+import CommomHeader from '@/app/NavHeader/CommomHeader'
 
 const ClassesLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (

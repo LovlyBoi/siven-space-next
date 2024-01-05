@@ -1,7 +1,7 @@
 import { useMemo, type FC, type ReactNode } from 'react'
 import Link from 'next/link'
-import dayjs from '../../utils/dayjs'
-import type { Card as CardType, TagColor } from '@/types'
+import dayjs from '@/utils/dayjs'
+import type { Card as CardType, TagColor } from '@/app/types'
 import styles from './index.module.css'
 
 type Props = {

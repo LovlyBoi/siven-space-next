@@ -1,4 +1,4 @@
-import { Card } from '../types'
+import { Card } from '../app/types'
 import { request } from '../utils/request'
 
 export function getBlogsByType(type: string) {
