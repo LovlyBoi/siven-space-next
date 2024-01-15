@@ -77,14 +77,17 @@ const Footer: FC<Props> = () => {
           by <span className="underline">Siven</span> and{' '}
           <span className="underline">Lin</span>.
         </div>
-        <CSSTransition
-          in={isMsgVisiable}
-          classNames="fade"
-          timeout={300}
-          unmountOnExit
-        >
-          <div>Some good idea support by Semghh</div>
-        </CSSTransition>
+        <div className="h-[1em]">
+          {/* 把空间支撑起来，不让页面抖动 */}
+          <CSSTransition
+            in={isMsgVisiable}
+            classNames="fade"
+            timeout={300}
+            unmountOnExit
+          >
+            <div>Some good idea support by Semghh</div>
+          </CSSTransition>
+        </div>
       </div>
     </footer>
   )
