@@ -7,29 +7,11 @@ import Image from 'next/image'
 import avatar from '@/static/img/avatar.jpg'
 import styles from './index.module.css'
 import { useScreenType } from '@/utils/useScreen'
+import { navList } from './navList'
 
 type Props = {
   children?: ReactNode
 }
-
-const navList: {
-  title: string
-  to?: string
-  render?: (mobile?: boolean) => ReactNode
-}[] = [
-  {
-    title: '全部',
-    to: '/',
-  },
-  {
-    title: '笔记',
-    to: '/notes',
-  },
-  {
-    title: '生活随笔',
-    to: '/essays',
-  },
-]
 
 const CommomHeader: FC<Props> = () => {
   const pathname = usePathname()
@@ -137,9 +119,9 @@ const CommomHeader: FC<Props> = () => {
                 className={styles['menu-static']}
                 onClick={() => handlePhoneMenuClick()}
               >
-                <div />
-                <div />
-                <div />
+                <div className="bg-gray-700 dark:bg-gray-200" />
+                <div className="bg-gray-700 dark:bg-gray-200" />
+                <div className="bg-gray-700 dark:bg-gray-200" />
               </div>
             )}
             {/* 大屏幕展开菜单按钮 */}
@@ -150,9 +132,9 @@ const CommomHeader: FC<Props> = () => {
                   expend ? styles['cross-movable'] : styles['menu-movable']
                 }
               >
-                <div />
-                <div />
-                <div />
+                <div className="bg-gray-700 dark:bg-gray-200" />
+                <div className="bg-gray-700 dark:bg-gray-200" />
+                <div className="bg-gray-700 dark:bg-gray-200" />
               </label>
             ) : null}
           </div>

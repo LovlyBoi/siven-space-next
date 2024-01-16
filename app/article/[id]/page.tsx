@@ -3,7 +3,7 @@ import { resolve } from 'node:url'
 import type { Outline as OutlineType, Blog } from '@/app/types'
 import Outline from './Outline'
 import ArticleBody from './ArticleBody'
-import { redirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: { id: string }
@@ -44,7 +44,7 @@ async function getBlogData(id: string, visitorId?: string): Promise<Blog> {
   if (!blogData.ok) {
     if (blogData.status === 404) {
       // 没有这篇文章
-      redirect('/not-found')
+      notFound()
     } else {
       // 出错
       throw new Error('Failed to fetch blog data')
@@ -61,10 +61,8 @@ export default memo(async function Article({
 
   return (
     <>
-      <div>
-        <Outline outline={blog.parsed.outline} />
-        <ArticleBody parsedHtml={blog.parsed.html} />
-      </div>
+      <Outline outline={blog.parsed.outline} />
+      <ArticleBody parsedHtml={blog.parsed.html} />
     </>
   )
 })

@@ -50,6 +50,7 @@ const Card: FC<Props> = ({ data }) => {
       <Link
         href={`/article/${id}`}
         className="block text-[18px] theme-gray-600-text hover:text-indigo-400 dark:hover:text-pink-300 tracking-wide my-3 transition-all duration-300 delay-75"
+        scroll={false}
       >
         {title}
       </Link>
@@ -59,6 +60,7 @@ const Card: FC<Props> = ({ data }) => {
             href={`/article/${id}`}
             className="picture h-[200px] rounded flex bg-slate-400 overflow-hidden"
             key={picUrl + index}
+            scroll={false}
           >
             <img
               alt=""

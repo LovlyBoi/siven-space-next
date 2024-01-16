@@ -8,6 +8,7 @@ type Props = {
 
 const DarkMode: FC<Props> = ({ children }) => {
   useDarkMode()
+
   return <>{children}</>
 }
 

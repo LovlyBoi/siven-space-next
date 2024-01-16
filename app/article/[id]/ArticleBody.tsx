@@ -1,11 +1,5 @@
 'use client'
-import {
-  type FC,
-  type ReactNode,
-  useEffect,
-  useRef,
-  experimental_useEffectEvent,
-} from 'react'
+import { type FC, type ReactNode, useEffect, useRef } from 'react'
 import { observeElements } from '@/utils/intersectionObserver'
 import { useActiveHashStore } from './activeHashStore'
 
@@ -24,14 +18,13 @@ const ArticleBody: FC<Props> = ({ parsedHtml }) => {
     observeElements(
       '.marked h1, .marked h2, .marked h3, .marked h4, .marked h5, .marked h6',
       (hash) => {
-        console.log(hash)
         setterRef.current(hash)
       },
     )
   }, [])
 
   return (
-    <main className="fixed top-0 bottom-0 left-0 right-0 px-4 sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto pb-6">
+    <main className="fixed top-[68px] md:top-[60px] bottom-0 left-0 right-0 px-4 sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto pb-32">
       <div
         className="marked max-w-[720px] mx-auto theme-gray-800-text font-sans box-border"
         dangerouslySetInnerHTML={{ __html: '<p></p>' + (parsedHtml ?? '') }}

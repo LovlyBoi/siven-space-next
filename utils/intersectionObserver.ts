@@ -18,7 +18,6 @@ export async function observeElements(
   selector: string,
   onStateSettle?: (hash: string) => unknown,
 ) {
-  console.log('+++')
   originalIO?.disconnect()
 
   originalIO = new IntersectionObserver((els) => {
@@ -37,7 +36,6 @@ export async function observeElements(
     selector,
     originalIO,
   )
-  console.log('observeHeaders over')
 }
 
 async function addElements(selector: string, io: IntersectionObserver) {
