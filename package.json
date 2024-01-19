@@ -6,6 +6,7 @@
     "prepare": "node ./scripts/installHusky.js",
     "dev": "next dev",
     "build": "next build",
+    "build:docker": "docker build -t siven-space-next .",
     "start": "next start",
     "lint": "next lint",
     "commit": "cz"
