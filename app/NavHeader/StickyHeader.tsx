@@ -48,12 +48,16 @@ const StickyHeader = forwardRef<HTMLElement, Props>((props, ref) => {
               className="mx-6 whitespace-nowrap transition-all duration-300 group"
               key={nav.title}
             >
-              <Link
-                className="group-hover:text-indigo-400 dark:group-hover:text-pink-300"
-                href={nav.to || ''}
-              >
-                {nav.title}
-              </Link>
+              {nav.render ? (
+                nav.render()
+              ) : (
+                <Link
+                  href={nav.to ?? '/'}
+                  className="group-hover:text-indigo-400 dark:group-hover:text-pink-300"
+                >
+                  {nav.title}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

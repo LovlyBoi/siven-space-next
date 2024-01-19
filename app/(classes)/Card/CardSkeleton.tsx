@@ -25,14 +25,12 @@ const CardSkeleton: FC<Props> = ({ picNum = 4 }) => {
       ></div>
 
       <div className={`card-pictures-wrapper pictures-${picNum} w-full`}>
-        {Array(picNum)
-          .fill(0)
-          .map((_, i) => (
-            <div
-              key={i}
-              className={`picture h-[200px] rounded flex overflow-hidden ${styles['skeleton-background']}`}
-            ></div>
-          ))}
+        {Array.from({ length: picNum }, (_, i) => (
+          <div
+            key={i}
+            className={`picture h-[200px] rounded flex overflow-hidden ${styles['skeleton-background']}`}
+          ></div>
+        ))}
       </div>
       <div className="card-footer mt-3 flex gap-2 ">
         <div className="update-date bg-slate-100 h-[12px] w-20"></div>

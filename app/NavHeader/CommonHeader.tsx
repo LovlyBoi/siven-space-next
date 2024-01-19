@@ -100,7 +100,12 @@ const CommonHeader: FC<Props> = () => {
                     {nav.render ? (
                       nav.render()
                     ) : (
-                      <Link href={nav.to ?? '/'}>{nav.title}</Link>
+                      <Link
+                        href={nav.to ?? '/'}
+                        className="group-hover:text-indigo-400 dark:group-hover:text-pink-300"
+                      >
+                        {nav.title}
+                      </Link>
                     )}
                   </li>
                 ))}
