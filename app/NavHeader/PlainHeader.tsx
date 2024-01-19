@@ -1,9 +1,11 @@
+'use client'
 import type { FC, ReactNode } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import ThemeSwitcher from './ThemeSwitcher'
 import { navList } from './navList'
 import Avatar from '@/static/img/avatar.jpg'
+import styles from './index.module.css'
 
 type Props = {
   children?: ReactNode
@@ -11,7 +13,9 @@ type Props = {
 
 const PlainHeader: FC<Props> = () => {
   return (
-    <header className="sticky-header theme-white-600-bg fixed top-0 left-0 right-0 p-4 sm:py-2 lg:px-8 rounded-b-lg sm:rounded-none shadow-sm flex items-center justify-between z-10">
+    <header
+      className={`${styles['nav-header']} sticky-header bg-l-white-d-slate-600 shadow-sm shadow-l-default-d-slate-400 fixed top-0 left-0 right-0 p-4 sm:py-2 lg:px-8 rounded-b-lg sm:rounded-none flex items-center justify-between z-10`}
+    >
       <div className="left flex items-center">
         <Link
           href="/"
@@ -28,11 +32,11 @@ const PlainHeader: FC<Props> = () => {
         <div className="flex flex-col ml-2">
           <Link
             href="/"
-            className="theme-gray-600-text text-sm sm:text-lg tracking-wider"
+            className="text-l-gray-600-d-gray-200 text-sm sm:text-lg tracking-wider"
           >
             浅秋细语
           </Link>
-          <div className="theme-gray-400-text text-xs tracking-wider font-thin">
+          <div className="text-l-gray-400-d-gray-400 text-xs tracking-wider font-thin">
             智文的前端小站
           </div>
         </div>
@@ -41,7 +45,7 @@ const PlainHeader: FC<Props> = () => {
       <div className="right flex items-center">
         <ThemeSwitcher></ThemeSwitcher>
         <ul
-          className="nav-list theme-gray-400-text flex items-center h-8 overflow-x-hidden"
+          className="hidden md:flex nav-list text-l-gray-400-d-gray-400 items-center h-8 overflow-x-hidden"
           v-if="screenType !== 'phone'"
         >
           {navList.map((nav) => (
@@ -59,11 +63,16 @@ const PlainHeader: FC<Props> = () => {
           ))}
         </ul>
 
-        {/* <label className="menu-static mx-4">
-          <div></div>
-          <div></div>
-          <div></div>
-        </label> */}
+        <label
+          className={`${styles['menu-static']} mx-4 flex flex-col justify-around cursor-pointer md:hidden`}
+          onClick={() => {
+            console.log('phone click')
+          }}
+        >
+          <div className="bg-l-gray-700-gray-200"></div>
+          <div className="bg-l-gray-700-gray-200"></div>
+          <div className="bg-l-gray-700-gray-200"></div>
+        </label>
       </div>
     </header>
   )

@@ -33,7 +33,7 @@ const Card: FC<Props> = ({ data }) => {
 
   return (
     <div
-      className={`content-card ${styles['content-card']} p-[15px] content theme-white-600-bg w-full box-border rounded-lg`}
+      className={`content-card ${styles['content-card']} p-[15px] content bg-l-white-d-slate-600 w-full box-border rounded-lg`}
     >
       <div>
         <div
@@ -43,13 +43,13 @@ const Card: FC<Props> = ({ data }) => {
         >
           {tag.name}
         </div>
-        <div className="update-time theme-gray-400-text text-xs inline-block cursor-default">
+        <div className="update-time text-l-gray-400-d-gray-400 text-xs inline-block cursor-default">
           发布于 {publishFrom}
         </div>
       </div>
       <Link
         href={`/article/${id}`}
-        className="block text-[18px] theme-gray-600-text hover:text-indigo-400 dark:hover:text-pink-300 tracking-wide my-3 transition-all duration-300 delay-75"
+        className="block text-[18px] text-l-gray-600-d-gray-200 hover:text-indigo-400 dark:hover:text-pink-300 tracking-wide my-3 transition-all duration-300 delay-75"
         scroll={false}
       >
         {title}
@@ -70,7 +70,7 @@ const Card: FC<Props> = ({ data }) => {
           </Link>
         ))}
       </div>
-      <div className="card-footer theme-gray-400-text text-xs mt-3 flex gap-2">
+      <div className="card-footer text-l-gray-400-d-gray-400 text-xs mt-3 flex gap-2">
         <div className="update-date">更新于：{updateFrom}</div>
         <div className="author">作者：{author}</div>
       </div>

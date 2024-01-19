@@ -26,7 +26,7 @@ const ArticleBody: FC<Props> = ({ parsedHtml }) => {
   return (
     <main className="fixed top-[68px] md:top-[60px] bottom-0 left-0 right-0 px-4 sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto pb-32">
       <div
-        className="marked max-w-[720px] mx-auto theme-gray-800-text font-sans box-border"
+        className="marked max-w-[720px] mx-auto text-l-gray-800-d-gray-200 font-sans box-border"
         dangerouslySetInnerHTML={{ __html: '<p></p>' + (parsedHtml ?? '') }}
       ></div>
     </main>

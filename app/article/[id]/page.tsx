@@ -53,10 +53,7 @@ async function getBlogData(id: string, visitorId?: string): Promise<Blog> {
   return blogData.json()
 }
 
-export default memo(async function Article({
-  params: { id },
-  searchParams,
-}: Props) {
+export default memo(async function Article({ params: { id } }: Props) {
   const blog = await getBlogData(id)
 
   return (

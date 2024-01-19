@@ -1,7 +1,7 @@
 import { type ReactNode, type FC, memo } from 'react'
 import PlainHeader from '@/app/NavHeader/PlainHeader'
 
-const ClassesLayout: FC<{ children?: ReactNode }> = ({ children }) => {
+const ArticleLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
     <>
       <div>
@@ -12,4 +12,4 @@ const ClassesLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   )
 }
 
-export default memo(ClassesLayout)
+export default memo(ArticleLayout)
