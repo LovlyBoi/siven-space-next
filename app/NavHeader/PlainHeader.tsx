@@ -14,7 +14,7 @@ type Props = {
 const PlainHeader: FC<Props> = () => {
   return (
     <header
-      className={`${styles['nav-header']} sticky-header bg-l-white-d-slate-600 shadow-sm shadow-l-default-d-slate-400 fixed top-0 left-0 right-0 p-4 sm:py-2 lg:px-8 rounded-b-lg sm:rounded-none flex items-center justify-between z-10`}
+      className={`${styles['nav-header']} sticky-header backdrop-blur-sm bg-l-white/90-d-slate-600 shadow-sm shadow-l-default-d-slate-400 fixed top-0 left-0 right-0 p-4 sm:py-2 lg:px-8 rounded-b-lg sm:rounded-none flex items-center justify-between z-10`}
     >
       <div className="left flex items-center">
         <Link
