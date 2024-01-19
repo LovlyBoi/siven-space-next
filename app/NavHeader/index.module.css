@@ -2,6 +2,20 @@
   --unit: 0.25rem;
 }
 
+.sticky-header {
+  @media (max-width: 640px) {
+    width: calc(100% - 2 * var(--unit));
+  }
+
+  @media (min-width: 640px) {
+    width: calc(100% - 8 * var(--unit));
+  }
+
+  @media (min-width: 1024px) {
+    width: 1024px;
+  }
+}
+
 .menu-movable {
   cursor: pointer;
   height: calc(5 * var(--unit));

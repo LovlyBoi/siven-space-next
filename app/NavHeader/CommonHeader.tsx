@@ -13,7 +13,7 @@ type Props = {
   children?: ReactNode
 }
 
-const CommomHeader: FC<Props> = () => {
+const CommonHeader: FC<Props> = () => {
   const pathname = usePathname()
 
   const [expend, setExpend] = useState(false)
@@ -139,4 +139,4 @@ const CommomHeader: FC<Props> = () => {
   )
 }
 
-export default CommomHeader
+export default CommonHeader

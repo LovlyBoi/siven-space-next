@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { type FC, memo } from 'react'
 import { resolve } from 'node:url'
 import type { Outline as OutlineType, Blog } from '@/app/types'
 import Outline from './Outline'
@@ -53,7 +53,7 @@ async function getBlogData(id: string, visitorId?: string): Promise<Blog> {
   return blogData.json()
 }
 
-export default memo(async function Article({ params: { id } }: Props) {
+const Article: FC<Props> = async ({ params: { id } }: Props) => {
   const blog = await getBlogData(id)
 
   return (
@@ -62,4 +62,6 @@ export default memo(async function Article({ params: { id } }: Props) {
       <ArticleBody parsedHtml={blog.parsed.html} />
     </>
   )
-})
+}
+
+export default memo(Article)

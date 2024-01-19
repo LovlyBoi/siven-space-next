@@ -132,25 +132,40 @@ body.stone-theme {
 }
 
 /* 从上面渐入的动画 */
-.fade-in-top-enter-active,
-.fade-in-top-leave-active {
-  transition: all 300ms;
-}
-
-.fade-in-top-enter-from,
-.fade-in-top-leave-to {
+.fade-in-top-enter,
+.fade-in-top-appear {
   opacity: 0;
   transform: translateY(-100%);
 }
 
-.fade-enter-active,
-.fade-leave-active {
+.fade-in-top-enter-active,
+.fade-in-top-appear-active {
+  opacity: 1;
+  transform: none;
+  transition: all 300ms;
+}
+
+.fade-in-top-enter-done,
+.fade-in-top-appear-done {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in-top-exit {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in-top-exit-active {
+  opacity: 0;
+  transform: translateY(-100%);
+  /* 回去的时候快一点，感觉会更好一些 */
   transition: all 200ms;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.fade-in-top-exit-done {
   opacity: 0;
+  transform: translateY(-100%);
 }
 
 /* marked 样式 */
