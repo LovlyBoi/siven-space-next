@@ -8,6 +8,7 @@
     "build": "next build",
     "build:docker": "docker build -t siven-space-next .",
     "start": "next start",
+    "deploy": "pm2 startOrRestart ecosystem.config.js",
     "lint": "next lint",
     "commit": "cz"
   },

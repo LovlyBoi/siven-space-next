@@ -19,6 +19,15 @@ const mapTagColor: Record<TagColor, string> = {
 const Card: FC<Props> = ({ data }) => {
   const { id, title, tag, author, pictures, publishDate, updateDate } = data
 
+  const picturesUrl = pictures.map((url) => {
+    const { pathname } = new URL(url)
+    let baseUrl = process.env.AXIOS_BASEURL
+    if (baseUrl?.endsWith('/')) {
+      baseUrl = baseUrl.slice(0, -1)
+    }
+    return baseUrl + pathname
+  })
+
   const publishFrom = useMemo(
     () => dayjs(new Date(publishDate)).format('YYYY / M / DD '),
     [publishDate],
@@ -55,7 +64,7 @@ const Card: FC<Props> = ({ data }) => {
         {title}
       </Link>
       <div className={`card-pictures-wrapper pictures-${picNumber} w-full`}>
-        {pictures.slice(0, 4).map((picUrl, index) => (
+        {picturesUrl.slice(0, 4).map((picUrl, index) => (
           <Link
             href={`/article/${id}`}
             className="picture h-[200px] rounded flex bg-slate-400 overflow-hidden"
