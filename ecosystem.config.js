@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'sivenSpaceNext',
+      name: 'next',
       exec_mode: 'cluster',
       instances: '1',
       script: 'node_modules/next/dist/bin/next',
