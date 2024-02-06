@@ -1,9 +1,9 @@
 'use client' // Error components must be Client Components
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export default function Error({
   error,
@@ -17,9 +17,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div
-      className={`${inter.className} w-screen h-screen flex justify-center items-center`}
-    >
+    <div className="font-sans w-screen h-screen flex justify-center items-center w-screen h-screen flex justify-center items-center">
       <div className="h-[50px] flex items-center">
         <h1 className="h-full leading-[50px] text-[24px] pr-[24px] font-medium border-r border-gray-400">
           500
