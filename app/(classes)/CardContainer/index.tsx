@@ -41,16 +41,7 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
         hasNextSetterRef.current(hasNext)
         cardsSetterRef.current(cards)
         loadingSetterRef.current(false)
-        // 等待两个宏任务， React 完成渲染
-        return macroTask()
       })
-      .then(() => macroTask())
-      .then(() =>
-        masonryLoayout('.card-container', {
-          itemSelector: '.content-card',
-          gutter: 10,
-        }),
-      )
       .catch((error) => {
         // 多余的副作用，不需要管
         if (error.message === 'ignore') return
@@ -63,6 +54,15 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
     }
   }, [type])
 
+  useEffect(() => {
+    if (cards.length) {
+      masonryLoayout('.card-container', {
+        itemSelector: '.content-card',
+        gutter: 10,
+      })
+    }
+  }, [cards])
+
   const handleLoadMoreCard = () => {
     loadingMoreSetterRef.current(true)
     getBlogs(type, page.ps, page.pn + 1)
@@ -70,15 +70,7 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
         cardsSetterRef.current((prev) => [...prev, ...cards])
         hasNextSetterRef.current(hasNext)
         pageSetterRef.current((prev) => ({ ...prev, pn: prev.pn + 1 }))
-        return macroTask()
       })
-      .then(() => macroTask())
-      .then(() =>
-        masonryLoayout('.card-container', {
-          itemSelector: '.content-card',
-          gutter: 10,
-        }),
-      )
       .catch((error) => {
         // 出错
         console.error(error)
