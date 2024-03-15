@@ -1,0 +1,8 @@
+version: '3'
+services:
+  siven-space-fe:
+    image: siven-space-fe:latest
+    container_name: siven-space-fe
+    restart: always
+    ports:
+      - "3000:3000"

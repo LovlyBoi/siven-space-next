@@ -14,8 +14,6 @@ type Props = {
 
 const skeletonPicNums = [2, 3, 2]
 
-const macroTask = () => new Promise((resolve) => setTimeout(resolve, 0))
-
 const CardContainer: FC<Props> = ({ type = 'all' }) => {
   const [cards, setCards] = useState<CardType[]>([])
   const cardsSetterRef = useRef(setCards)
@@ -84,7 +82,7 @@ const CardContainer: FC<Props> = ({ type = 'all' }) => {
     <>
       <div className="card-container w-full py-6">
         {loading ? (
-          <div className="flex items-start gap-[10px]">
+          <div className="sm:flex items-start gap-[10px]">
             {skeletonPicNums.map((picNum, i) => {
               return <CardSkeleton key={i} picNum={picNum} />
             })}

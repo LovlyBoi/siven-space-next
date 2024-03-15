@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "node ./scripts/installHusky.js",
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--max_old_space_size=2048' next build",
     "build:docker": "docker build -t siven-space-next .",
     "start": "next start",
     "deploy:pm2": "pm2 startOrRestart ecosystem.config.js",
