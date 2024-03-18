@@ -23,23 +23,22 @@ export async function generateMetadata({ params }: Props) {
 function getHighestTitle(outline: OutlineType) {
   return (
     outline.reduce((higherTitle, item) =>
-      item.depth < higherTitle.depth ? item : higherTitle,
-    ).title || 'Siven Space'
+      item.level < higherTitle.level ? item : higherTitle,
+    ).text || 'Siven Space'
   )
 }
 
 // fetch 缓存时间
-export const revalidate = 3600
+// export const revalidate = 3600
 
 // 获取博客内容
 async function getBlogData(id: string, visitorId?: string): Promise<Blog> {
   const fetchUrl = resolve(
     process.env.FETCH_BASEURL as string,
-    `/blogs/article/${id}`,
+    `/blogs/html/${id}`,
   )
   const blogData = await fetch(fetchUrl, {
-    method: 'POST',
-    body: JSON.stringify({ visitorId }),
+    method: 'GET',
   })
   if (!blogData.ok) {
     if (blogData.status === 404) {

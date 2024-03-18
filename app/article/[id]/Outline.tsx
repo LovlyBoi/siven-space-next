@@ -22,15 +22,15 @@ const Outline: FC<Props> = ({ outline }) => {
           return (
             <Link
               className={`break-words hover:text-indigo-400 dark:hover:text-pink-300 ${
-                '#' + activeHash === item.anchor
+                '#' + activeHash === item.id
                   ? 'text-indigo-500 dark:text-pink-300 font-normal'
                   : ''
               }`}
-              key={item.anchor}
-              href={item.anchor}
+              key={item.id}
+              href={`#${item.id}`}
             >
-              <li className={`aside-item aside-item-${item.depth}`}>
-                {item.title}
+              <li className={`aside-item aside-item-${item.level}`}>
+                {item.text}
               </li>
             </Link>
           )

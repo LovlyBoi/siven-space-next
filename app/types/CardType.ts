@@ -21,9 +21,9 @@ export enum BlogType {
 }
 
 interface OutlineItem {
-  anchor: string
-  depth: number
-  title: string
+  id: string
+  level: number
+  text: string
 }
 
 // 大纲
