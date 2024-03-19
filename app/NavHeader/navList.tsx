@@ -24,7 +24,7 @@ export const navList: NavListItem[] = [
     title: '管理文章',
     render() {
       return (
-        <Link href="http://siven.cc/cms/index.html" target="_blank">
+        <Link href="https://siven.cc/cms/index.html" target="_blank">
           管理文章
         </Link>
       )
