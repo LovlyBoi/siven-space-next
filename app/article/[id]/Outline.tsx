@@ -14,7 +14,7 @@ const Outline: FC<Props> = ({ outline }) => {
   const activeHash = useActiveHashStore((state) => state.activeHash)
 
   return (
-    <aside className="hidden md:block bg-l-white-d-slate-700 fixed top-[68px] md:top-[60px] bottom-0 overflow-y-auto w-44 lg:w-60 xl:w-72 border-r dark:border-gray-500">
+    <aside className="hidden pt-4 pb-24 md:block bg-l-white-d-slate-700 fixed top-[68px] md:top-[60px] bottom-0 overflow-y-auto w-44 lg:w-60 xl:w-72 border-r dark:border-gray-500">
       <ul
         className={`${styles['outline']} text-l-gray-600-d-gray-200 font-extralight font-sans`}
       >
