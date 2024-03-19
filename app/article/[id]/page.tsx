@@ -29,7 +29,7 @@ function getHighestTitle(outline: OutlineType) {
 }
 
 // fetch 缓存时间
-export const revalidate = 3600
+// export const revalidate = 3600
 
 // 获取博客内容
 async function getBlogData(id: string, visitorId?: string): Promise<Blog> {

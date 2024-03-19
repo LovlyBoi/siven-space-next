@@ -29,9 +29,10 @@ const Outline: FC<Props> = ({ outline }) => {
               key={item.id}
               href={`#${item.id}`}
             >
-              <li className={`aside-item aside-item-${item.level}`}>
-                {item.text}
-              </li>
+              <li
+                className={`aside-item aside-item-${item.level}`}
+                dangerouslySetInnerHTML={{ __html: item.text }}
+              ></li>
             </Link>
           )
         })}
