@@ -1,4 +1,5 @@
 import { type FC, type ReactNode } from 'react'
+import BounceLoading from './BounceLoading'
 
 type Props = {
   children?: ReactNode
@@ -6,10 +7,12 @@ type Props = {
 
 const Loading: FC<Props> = () => {
   return (
-    <html lang="zh-CN">
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body>Index Loading..</body>
-    </html>
+    <div className="flex justify-center items-center h-screen">
+      <div className="flex items-center flex-col gap-1">
+        <BounceLoading></BounceLoading>
+        Loading..
+      </div>
+    </div>
   )
 }
 
