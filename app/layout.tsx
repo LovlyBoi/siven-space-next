@@ -1,6 +1,6 @@
 import { type ReactNode, type FC, memo } from 'react'
-import './global.css'
 import DarkMode from './DarkMode'
+import './global.css'
 
 const RootLayout: FC<{ children?: ReactNode }> = ({ children }) => {
   return (
