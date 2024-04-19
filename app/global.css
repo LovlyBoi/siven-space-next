@@ -375,7 +375,7 @@ body.stone-theme {
     margin-bottom: 0;
   }
 
-  code,
+  /* code,
   tt {
     font-size: 90%;
     border-radius: 3px;
@@ -387,20 +387,63 @@ body.stone-theme {
     margin: 0 2px;
     padding: 2px 4px;
     @apply bg-blue-100;
+  } */
+
+  pre > code > .code-wrapper {
+    margin: 12px 0;
+    display: flex;
+    line-height: 21px;
+    overflow: hidden;
+    @apply rounded-md bg-gray-50;
   }
 
-  pre {
+  pre > code > .code-wrapper .line-numbers {
+    /* width: 24px; */
+    height: 100%;
+    padding: 20px 8px 20px 18px;
+    text-align: right;
+    font-size: 70%;
+    line-height: 21px;
+    @apply text-gray-400 bg-gray-50;
+  }
+
+  pre > code > .code-wrapper .line-numbers div[data-line-num]::before {
+    display: block;
+    content: attr(data-line-num);
+  }
+
+  pre > code > .code-wrapper .code {
+    margin: 0 2px;
+    flex: 1;
+    padding: 20px 24px 20px 0;
+    border-radius: none;
+    font-size: 90%;
+    @apply font-mono break-words bg-gray-50 overflow-x-auto;
+  }
+
+  /* pre {
     margin: 12px 0;
     padding: 20px 24px;
     @apply rounded-md overflow-x-auto bg-gray-50;
   }
 
   pre > code {
+    line-height: 21px;
     margin: 0;
     padding: 0;
     border-radius: none;
     @apply bg-gray-50;
-  }
+  } */
+
+  /* pre > code > span[data-line-num]::before {
+    width: 18px;
+    text-align: right;
+    font-size: 70%;
+    display: inline-block;
+    position: absolute;
+    background-color: #eee;
+    content: attr(data-line-num);
+  } */
 
   strong,
   b {
