@@ -389,6 +389,7 @@ body.stone-theme {
     @apply bg-blue-100;
   } */
 
+  /* 左侧行号 */
   pre > code > .code-wrapper {
     margin: 12px 0;
     display: flex;
@@ -419,6 +420,27 @@ body.stone-theme {
     border-radius: none;
     font-size: 90%;
     @apply font-mono break-words bg-gray-50 overflow-x-auto;
+  }
+
+  /* 右上角语言标识 */
+  pre > code > .code-wrapper {
+    position: relative;
+  }
+
+  pre > code > .code-wrapper::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: #999;
+    content: attr(data-lang);
+    padding: 0 5px;
+    background-color: #f5f5f5;
+    display: none;
+  }
+
+  pre > code > .code-wrapper:hover::after {
+    display: block;
   }
 
   /* pre {
