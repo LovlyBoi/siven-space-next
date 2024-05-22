@@ -287,6 +287,7 @@ body.stone-theme {
     background-color: #e1e4e8;
     border: 0;
   }
+
   h1 p,
   h2 p,
   h3 p,
@@ -375,98 +376,6 @@ body.stone-theme {
     margin-bottom: 0;
   }
 
-  /* code,
-  tt {
-    font-size: 90%;
-    border-radius: 3px;
-    @apply font-mono break-words;
-  }
-
-  code,
-  tt {
-    margin: 0 2px;
-    padding: 2px 4px;
-    @apply bg-blue-100;
-  } */
-
-  /* 左侧行号 */
-  pre > code > .code-wrapper {
-    margin: 12px 0;
-    display: flex;
-    line-height: 21px;
-    overflow: hidden;
-    @apply rounded-md bg-gray-50;
-  }
-
-  pre > code > .code-wrapper .line-numbers {
-    /* width: 24px; */
-    height: 100%;
-    padding: 20px 8px 20px 18px;
-    text-align: right;
-    font-size: 70%;
-    line-height: 21px;
-    @apply text-gray-400 bg-gray-50;
-  }
-
-  pre > code > .code-wrapper .line-numbers div[data-line-num]::before {
-    display: block;
-    content: attr(data-line-num);
-  }
-
-  pre > code > .code-wrapper .code {
-    margin: 0 2px;
-    flex: 1;
-    padding: 20px 24px 20px 0;
-    border-radius: none;
-    font-size: 90%;
-    @apply font-mono break-words bg-gray-50 overflow-x-auto;
-  }
-
-  /* 右上角语言标识 */
-  pre > code > .code-wrapper {
-    position: relative;
-  }
-
-  pre > code > .code-wrapper::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 12px;
-    color: #999;
-    content: attr(data-lang);
-    padding: 0 5px;
-    background-color: #f5f5f5;
-    display: none;
-  }
-
-  pre > code > .code-wrapper:hover::after {
-    display: block;
-  }
-
-  /* pre {
-    margin: 12px 0;
-    padding: 20px 24px;
-    @apply rounded-md overflow-x-auto bg-gray-50;
-  }
-
-  pre > code {
-    line-height: 21px;
-    margin: 0;
-    padding: 0;
-    border-radius: none;
-    @apply bg-gray-50;
-  } */
-
-  /* pre > code > span[data-line-num]::before {
-    width: 18px;
-    text-align: right;
-    font-size: 70%;
-    display: inline-block;
-    position: absolute;
-    background-color: #eee;
-    content: attr(data-line-num);
-  } */
-
   strong,
   b {
     font-weight: 500;
@@ -478,108 +387,206 @@ body.stone-theme {
   }
 }
 
-.dark {
-  .marked {
-    pre {
-      margin: 12px 0;
-      padding: 20px 24px;
-      @apply rounded-md overflow-x-auto bg-gray-700;
-    }
+/* 代码块样式 */
+.marked {
+  .shiki-code-block {
+    margin: 0.8em 0;
+    display: flex;
+    line-height: 24px;
+    overflow: hidden;
+    @apply rounded-md bg-gray-50;
+  }
 
-    pre > code {
-      margin: 0;
-      padding: 0;
-      border-radius: none;
-      @apply bg-gray-700;
-    }
+  .shiki-code-block > .shiki > code {
+    display: block;
+    width: fit-content;
+  }
 
-    code,
-    tt {
-      margin: 0 2px;
-      padding: 2px 4px;
-      @apply bg-gray-600;
-    }
+  .shiki-code-block > .shiki .line {
+    display: inline-block;
+    padding: 0 16px;
+    width: calc(100%);
+  }
 
-    blockquote {
-      border-left: 4px dotted;
-      padding: 0 12px;
-      font-size: 0.9em;
-      @apply text-gray-400 border-gray-400;
-    }
+  /* 左侧行号 */
+  .shiki-code-block .shiki-code-lines {
+    height: 100%;
+    padding: 20px 8px 20px 18px;
+    text-align: right;
+    font-size: 13px;
+    @apply text-gray-400 bg-gray-50;
+  }
+
+  .shiki-code-block .shiki-code-lines div[data-line]::before {
+    display: block;
+    content: attr(data-line);
+  }
+
+  .shiki-code-block pre.shiki {
+    padding: 20px 0;
+    font-size: 14px;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  /* 右上角语言标识 */
+  .shiki-code-block {
+    position: relative;
+  }
+
+  .shiki-code-block::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: #888;
+    content: attr(data-lang);
+    padding: 0 8px;
+    background-color: #f5f5f5;
+    display: none;
+  }
+
+  .shiki-code-block:hover::after {
+    display: block;
+  }
+
+  /* focus */
+  .shiki-code-block pre.has-focused .line:not(.focused) {
+    filter: blur(0.095rem);
+    opacity: 0.7;
+    transition:
+      filter 0.35s,
+      opacity 0.35s;
+  }
+
+  .shiki-code-block pre.has-focused:hover .line:not(.focused) {
+    filter: none;
+    opacity: 1;
+  }
+
+  /* highlight */
+  .shiki-code-block pre.has-highlighted .line.highlighted {
+    @apply bg-gray-200;
+  }
+
+  /* diff */
+  .shiki-code-block pre.has-diff {
+    position: relative;
+  }
+
+  .shiki-code-block pre.has-diff .line.add {
+    @apply bg-green-50;
+  }
+
+  .shiki-code-block pre.has-diff .line.add::before,
+  .shiki-code-block pre.has-diff .line.remove::before {
+    display: block;
+    position: absolute;
+    left: 2px;
+  }
+
+  .shiki-code-block pre.has-diff .line.add::before {
+    content: '+';
+    @apply text-green-700;
+  }
+
+  .shiki-code-block pre.has-diff .line.remove::before {
+    content: '-';
+    @apply text-red-500;
+  }
+
+  .shiki-code-block pre.has-diff .line.remove {
+    @apply bg-red-50;
+  }
+
+  /* notation */
+  .shiki-code-block pre.has-highlighted .line.highlighted.error {
+    @apply bg-red-100;
+  }
+
+  .shiki-code-block pre.has-highlighted .line.highlighted.warning {
+    @apply bg-yellow-100;
   }
 }
 
-/* hljs */
-.marked {
-  pre code.hljs {
-    display: block;
-    overflow-x: auto;
-    padding: 1em;
-  }
-  code.hljs {
-    padding: 3px 5px;
-  }
-  .hljs {
-    color: #383a42;
-    background: #fafafa;
-  }
-  .hljs-comment,
-  .hljs-quote {
-    color: #a0a1a7;
-    font-style: italic;
-  }
-  .hljs-doctag,
-  .hljs-formula,
-  .hljs-keyword {
-    color: #a626a4;
-  }
-  .hljs-deletion,
-  .hljs-name,
-  .hljs-section,
-  .hljs-selector-tag,
-  .hljs-subst {
-    color: #e45649;
-  }
-  .hljs-literal {
-    color: #0184bb;
-  }
-  .hljs-addition,
-  .hljs-attribute,
-  .hljs-meta .hljs-string,
-  .hljs-regexp,
-  .hljs-string {
-    color: #50a14f;
-  }
-  .hljs-attr,
-  .hljs-number,
-  .hljs-selector-attr,
-  .hljs-selector-class,
-  .hljs-selector-pseudo,
-  .hljs-template-variable,
-  .hljs-type,
-  .hljs-variable {
-    color: #986801;
-  }
-  .hljs-bullet,
-  .hljs-link,
-  .hljs-meta,
-  .hljs-selector-id,
-  .hljs-symbol,
-  .hljs-title {
-    color: #4078f2;
-  }
-  .hljs-built_in,
-  .hljs-class .hljs-title,
-  .hljs-title.class_ {
-    color: #c18401;
-  }
-  .hljs-emphasis {
-    font-style: italic;
-  }
-  .hljs-strong {
-    font-weight: 700;
-  }
-  .hljs-link {
-    text-decoration: underline;
+.dark {
+  .marked {
+    .shiki,
+    .shiki span {
+      color: var(--shiki-dark) !important;
+      background-color: var(--shiki-dark-bg) !important;
+      /* Optional, if you also want font styles */
+      font-style: var(--shiki-dark-font-style) !important;
+      font-weight: var(--shiki-dark-font-weight) !important;
+      text-decoration: var(--shiki-dark-text-decoration) !important;
+    }
+
+    .shiki-code-block,
+    .shiki-code-block .shiki-code-lines {
+      @apply bg-gray-700;
+    }
+
+    .shiki-code-block::after {
+      @apply bg-gray-700 text-gray-400;
+    }
+
+    /* highlight */
+    .shiki-code-block pre.has-highlighted .line.highlighted {
+      @apply !bg-gray-900;
+      span {
+        background-color: inherit !important;
+      }
+    }
+
+    /* diff */
+    .shiki-code-block pre.has-diff {
+      position: relative;
+    }
+
+    .shiki-code-block pre.has-diff .line.add {
+      @apply !bg-green-900;
+      span {
+        background-color: inherit !important;
+      }
+    }
+
+    .shiki-code-block pre.has-diff .line.add::before,
+    .shiki-code-block pre.has-diff .line.remove::before {
+      display: block;
+      position: absolute;
+      left: 2px;
+    }
+
+    .shiki-code-block pre.has-diff .line.add::before {
+      content: '+';
+      @apply text-green-700;
+    }
+
+    .shiki-code-block pre.has-diff .line.remove::before {
+      content: '-';
+      @apply text-red-500;
+    }
+
+    .shiki-code-block pre.has-diff .line.remove {
+      @apply !bg-red-900;
+      span {
+        background-color: inherit !important;
+      }
+    }
+
+    /* notation */
+    .shiki-code-block pre.has-highlighted .line.highlighted.error {
+      @apply !bg-red-900;
+      span {
+        background-color: inherit !important;
+      }
+    }
+
+    .shiki-code-block pre.has-highlighted .line.highlighted.warning {
+      @apply !bg-amber-600;
+      span {
+        background-color: inherit !important;
+      }
+    }
   }
 }

@@ -21,15 +21,21 @@ export async function generateMetadata({ params }: Props) {
 
 // 解析出大纲的h1标题
 function getHighestTitle(outline: OutlineType) {
-  return (
-    outline.reduce((higherTitle, item) =>
-      item.level < higherTitle.level ? item : higherTitle,
-    ).text || 'Siven Space'
-  )
+  return outline.reduce(
+    (higherTitle, item) => {
+      if (!higherTitle) return item
+      return item.level < higherTitle.level ? item : higherTitle
+    },
+    {
+      id: 'Siven-Space',
+      text: 'Siven Space',
+      level: Infinity,
+    },
+  ).text
 }
 
 // fetch 缓存时间
-// export const revalidate = 3600
+export const revalidate = 3600
 
 // 获取博客内容
 async function getBlogData(id: string, visitorId?: string): Promise<Blog> {
