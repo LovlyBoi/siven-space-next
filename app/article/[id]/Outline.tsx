@@ -22,7 +22,7 @@ const Outline: FC<Props> = ({ outline }) => {
           return (
             <Link
               className={`break-words hover:text-indigo-400 dark:hover:text-pink-300 ${
-                '#' + activeHash === item.id
+                activeHash === item.id
                   ? 'text-indigo-500 dark:text-pink-300 font-normal'
                   : ''
               }`}
