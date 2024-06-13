@@ -17,7 +17,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="font-sans w-screen h-screen flex justify-center items-center w-screen h-screen flex justify-center items-center">
+    <div className="font-sans w-screen h-screen flex justify-center items-center">
       <div className="h-[50px] flex items-center">
         <h1 className="h-full leading-[50px] text-[24px] pr-[24px] font-medium border-r border-gray-400">
           500
