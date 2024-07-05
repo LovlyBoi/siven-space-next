@@ -399,7 +399,7 @@ body.stone-theme {
 
   .shiki-code-block > .shiki > code {
     display: block;
-    width: fit-content;
+    /* width: fit-content; */
   }
 
   .shiki-code-block > .shiki .line {
