@@ -2,6 +2,14 @@
 import { type FC, type ReactNode, useEffect, useRef } from 'react'
 import { observeElements } from '@/utils/intersectionObserver'
 import { useActiveHashStore } from './activeHashStore'
+import localFont from 'next/font/local'
+
+const LXGNeoZhiSongScreen = localFont({
+  src: './fonts/LXGWNeoZhiSongScreen.ttf',
+  variable: '--font-zhi-song-screen',
+  weight: '100 900',
+  display: 'swap',
+})
 
 type Props = {
   children?: ReactNode
@@ -26,7 +34,8 @@ const ArticleBody: FC<Props> = ({ parsedHtml }) => {
   return (
     <main className="scrollbar pt-[68px] md:pt-[60px] px-4 sm:ml-44 md:ml-44 lg:ml-60 xl:ml-72 overflow-auto pb-32">
       <article
-        className="marked max-w-[720px] mx-auto text-l-gray-800-d-gray-200 font-sans box-border"
+        style={LXGNeoZhiSongScreen.style}
+        className={`marked max-w-[720px] mx-auto text-l-gray-800-d-gray-200  box-border text-[16px] md:text-[18px]`}
         dangerouslySetInnerHTML={{ __html: '<p></p>' + (parsedHtml ?? '') }}
       ></article>
     </main>

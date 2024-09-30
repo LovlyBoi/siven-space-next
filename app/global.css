@@ -321,6 +321,22 @@ body.stone-theme {
     margin-bottom: 0;
   }
 
+  code {
+    font-size: 85%;
+    border-radius: 3px;
+    margin: 0 2px;
+    padding: 2px 4px;
+    background-color: #d7ebff;
+  }
+
+  pre code {
+    background-color: transparent;
+    font-size: unset;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
   blockquote {
     /*border-left: 4px solid #dddddd;*/
     border-left: 4px dotted;
@@ -511,6 +527,22 @@ body.stone-theme {
 
 .dark {
   .marked {
+    code {
+      font-size: 85%;
+      border-radius: 3px;
+      margin: 0 2px;
+      padding: 2px 4px;
+      background-color: #2267b1;
+    }
+
+    pre code {
+      background-color: transparent;
+      font-size: unset;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
     .shiki,
     .shiki span {
       color: var(--shiki-dark) !important;
